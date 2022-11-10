@@ -977,30 +977,59 @@ void loop()
 
 //////////////////////////////////////////////////////////////////////////////// BUTTON ////////////////////////////////////
 
-    if(digitalRead(button1) == LOW)
-      {
-        epr=20;
-        button (&epr);
-      }
+    if(EEPROM.read(10) == 0){ // mouse mode
+      if(digitalRead(button1) == LOW)
+        {
+          //epr=43;
+          //button (&epr);
+          Mouse.press(MOUSE_MIDDLE);
+        }
 
-    if(digitalRead(button2) == LOW)
-      {
-        epr=23;
-        button (&epr);
-      }
+      if(digitalRead(button2) == LOW)
+        {
+          //epr=46;
+          //button (&epr);
+          Mouse.press(MOUSE_RIGHT);
+        }
 
-      if(digitalRead(button3) == LOW)
-      {
-        epr=27;
-        button (&epr);
-      }
+        if(digitalRead(button3) == LOW)
+        {
+          //epr=47;
+          //button (&epr);
+          Mouse.press(MOUSE_LEFT);
+        }
 
-      if(digitalRead(joyButt) == LOW)
-      {
-        epr=35;
-        button (&epr);
-      }
-    
+        //if(digitalRead(joyButt) == LOW)
+        //{
+          //epr=35;
+          //button (&epr);
+        //}
+
+    }else{
+      if(digitalRead(button1) == LOW)
+        {
+          epr=20;
+          button (&epr);
+        }
+
+      if(digitalRead(button2) == LOW)
+        {
+          epr=23;
+          button (&epr);
+        }
+
+        if(digitalRead(button3) == LOW)
+        {
+          epr=27;
+          button (&epr);
+        }
+
+        if(digitalRead(joyButt) == LOW)
+        {
+          epr=35;
+          button (&epr);
+        }
+    }
 
   //////////////////////////////////////////////////////////////////////////// ORBIT & PAN //////////////////////////////
 
@@ -1019,7 +1048,8 @@ void loop()
         YValue = analogRead(vertPin) - YZero;  
         XValue = analogRead(horzPin) - XZero;
         h = millis();
-        if ((YValue > 13)||(YValue < (-13)))
+        //if ((YValue > 13)||(YValue < (-13)))
+        if ((YValue > joyThroth)||(YValue < (-joyThroth)))
           { 
             timeoff = LOW;
             selModes();
@@ -1027,7 +1057,8 @@ void loop()
             moved=1;
           }
           
-        if ((XValue > 13)||(XValue < (-13)))
+        //if ((XValue > 13)||(XValue < (-13)))
+        if ((XValue > joyThroth)||(XValue < (-joyThroth)))
           { 
             timeoff = LOW; 
             selModes();
