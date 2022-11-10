@@ -741,10 +741,8 @@ void selModes(void)
 
       case 1:
         //Autodesk
-        Keyboard.press(
-          
-        );
-        delay(3);
+        Keyboard.press(KEY_LEFT_SHIFT);
+        //delay(3);
         Mouse.press(MOUSE_MIDDLE);
       break;
 
@@ -1037,7 +1035,8 @@ void loop()
             moved=1;
           }
         
-        if ( (YValue <= 13)&&(YValue >= (-13))  &&  (XValue <= 13)&&(XValue >= (-13)))
+        //if ( (YValue <= 13)&&(YValue >= (-13))  &&  (XValue <= 13)&&(XValue >= (-13)))
+        if ( (YValue <= joyThroth)&&(YValue >= (-joyThroth))  &&  (XValue <= joyThroth)&&(XValue >= (-joyThroth)))        
           {  
             moved=0;
             if (((digitalRead(joyButt) == 1) && (digitalRead(button1) == 1) && (digitalRead(button2) == 1) && (digitalRead(button3) == 1)) || (EEPROM.read(10) == 4) )

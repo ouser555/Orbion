@@ -14,3 +14,4 @@
 #define button2           8          // Rear Button    
 #define button3           9          // Rear Button    
 #define timeout           60000      // time to turn off the display and led (60 seconds * 1000)
+#define joyThroth         30
